@@ -4,50 +4,65 @@
   <meta charset="UTF-8">
   <title>Prabu Global Profile</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
-    h1 { color: #333; }
-    a { color: #0077cc; text-decoration: none; }
-    ul { line-height: 1.8; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    a {
+      text-decoration: none;
+      color: #0077cc;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
-  <h1>Welcome to My Digital Portfolio</h1>
-  <p>Explore my prototypes and product design work:</p>
- <ul>
-  <li><strong>Axure Prototype:</strong>
-    <a href="https://prabu1301.github.io/Axure_Prototype_New/" target="_blank"
-       onclick="trackClick('Axure Prototype')">Please explore My Axure Prototype</a>
-  </li>
+  <h1>Prabu Global Profile</h1>
+  <p>Welcome to my digital portfolio! Here you can find examples of my web development and product design work.</p>
 
-  <li><strong>Figma Prototype:</strong>
-    <a href="https://www.figma.com/proto/raTGoqoXY9DHoqBVvbH8h5/Figma_ProtoType_Life-Insurance-Self-Portal?node-id=2001-2"
-       target="_blank"
-       onclick="trackClick('Figma Prototype')">Please explore my Figma Prototype</a>
-  </li>
+  <ul>
+    <li><strong>Axure Prototype:</strong>
+      <a href="https://prabu1301.github.io/Axure_Prototype_New/" target="_blank"
+         onclick="trackClick('Axure Prototype')">Please explore My Axure Prototype</a>
+    </li>
 
-  <li><strong>Wix Portfolio:</strong>
-    <a href="https://gideonprabu.wixsite.com/prabu-digitalprofile" target="_blank"
-       onclick="trackClick('Wix Portfolio')">Please explore My Digital Profile Website</a>
-  </li>
+    <li><strong>Figma Prototype:</strong>
+      <a href="https://www.figma.com/proto/raTGoqoXY9DHoqBVvbH8h5/Figma_ProtoType_Life-Insurance-Self-Portal?node-id=2001-2"
+         target="_blank"
+         onclick="trackClick('Figma Prototype')">Please explore my Figma Prototype</a>
+    </li>
 
-  <li><strong>GitHub Pages Prototype:</strong>
-    <a href="https://prabu1301.github.io/PrabuDigitalProfile/" target="_blank"
-       onclick="trackClick('GitHub Pages Prototype')">Please explore Axure Portfolio</a>
-  </li>
-</ul>
-<script>
-  function trackClick(pathname) {
-    fetch("/.netlify/functions/trackClicks", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pathname })
+    <li><strong>Wix Portfolio:</strong>
+      <a href="https://gideonprabu.wixsite.com/prabu-digitalprofile" target="_blank"
+         onclick="trackClick('Wix Portfolio')">Please explore My Digital Profile Website</a>
+    </li>
+
+    <li><strong>GitHub Pages Prototype:</strong>
+      <a href="https://prabu1301.github.io/PrabuDigitalProfile/" target="_blank"
+         onclick="trackClick('GitHub Pages Prototype')">Please explore Axure Portfolio</a>
+    </li>
+  </ul>
+
+  <script>
+    // Trigger visit tracking on page load
+    fetch("/.netlify/functions/trackVisits", {
+      method: "POST"
     });
-  }
-</script>
-<script>
-  fetch("/.netlify/functions/trackVisits", {
-    method: "POST"
-  });
-</script>
+
+    // Trigger click tracking when links are clicked
+    function trackClick(linkName) {
+      fetch("/.netlify/functions/trackClicks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ linkName })
+      });
+    }
+  </script>
 </body>
 </html>
