@@ -28,5 +28,10 @@
     });
   }
 </script>
+<script>
+  fetch("/.netlify/functions/trackVisits", {
+    method: "POST"
+  });
+</script>
 </body>
 </html>
