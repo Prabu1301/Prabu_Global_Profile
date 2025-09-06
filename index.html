@@ -19,5 +19,14 @@
     <li><strong>Wix Portfolio:</strong> <a href="https://gideonprabu.wixsite.com/prabu-digitalprofile" target="_blank">Please explore My Digital Profile Website</a></li>
     <li><strong>GitHub Pages Prototype:</strong> <a href="https://prabu1301.github.io/PrabuDigitalProfile/" target="_blank">Please explore Axure Portfolio</a></li>
   </ul>
+  <script>
+  function trackClick(pathname) {
+    fetch("/.netlify/functions/trackClicks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pathname })
+    });
+  }
+</script>
 </body>
 </html>
