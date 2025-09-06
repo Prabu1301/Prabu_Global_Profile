@@ -4,9 +4,19 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANO
 exports.handler = async (event) => {
   try {
     const { linkName } = JSON.parse(event.body);
-    console.log("Received linkName:", linkName);
+    const referrer = event.headers.referer || "Unknown";
 
-    const { error } = await supabase.from('LinkClicks').insert([{ link_name: linkName }]);
+    if (!linkName) {
+      return {
+        statusCode: 400,
+        body: 'Missing linkName'
+      };
+    }
+
+    const { error } = await supabase.from('LinkClicks').insert([
+      { link_name: linkName, referrer }
+    ]);
+
     if (error) {
       console.error("Supabase insert error:", error);
       return {
