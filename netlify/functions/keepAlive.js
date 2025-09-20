@@ -4,11 +4,11 @@ const axios = require('axios');
 const handler = async function () {
   const SUPABASE_URL = process.env.SUPABASE_URL;
   const ENDPOINT = '/rest/v1/keep_alive';
-  const SERVICE_ROLE_JWT = process.env.SERVICE_ROLE_JWT;
+  const SERVICE_ROLE_JWT = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   // 🔐 Validate environment variables before proceeding
   if (!SUPABASE_URL || !SERVICE_ROLE_JWT) {
-    throw new Error('Missing environment variables: SUPABASE_URL or SERVICE_ROLE_JWT');
+    throw new Error('Missing environment variables: SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
   }
 
   try {
